@@ -1,126 +1,373 @@
-/* --- Custom Variables & Theme --- */
+# Enhanced Portfolio CSS (Modern Dark UI)
+
+```css
+/* =========================
+   ROOT VARIABLES
+========================= */
 :root {
-    --accent: #00f2ea;      /* Teal/Cyan accent */
-    --bg-dark: #050505;     /* Deep black background */
-    --card-bg: #121212;     /* Dark grey for cards */
-    --text-main: #ffffff;
-    --text-dim: #b0b0b0;
+    --bg: #050816;
+    --card: rgba(17, 25, 40, 0.75);
+    --accent: #00f2ea;
+    --accent2: #7f5af0;
+    --white: #ffffff;
+    --text: #b8c1ec;
+    --border: rgba(255,255,255,0.08);
+    --shadow: 0 8px 32px rgba(0,0,0,0.37);
 }
 
-/* --- Global Reset --- */
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    overflow-x: hidden;
+/* =========================
+   GLOBAL STYLING
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
-/* --- Profile Image --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom right, #050816, #0b1026);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+section {
+    padding: 90px 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
+
+.text-info {
+    color: var(--accent) !important;
+}
+
+.text-secondary {
+    color: var(--text) !important;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--accent) !important;
+}
+
+.nav-link {
+    color: #fff !important;
+    margin-left: 18px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    left: 0;
+    bottom: -4px;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--accent) !important;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+header {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.display-4 {
+    font-size: 3.8rem;
+    line-height: 1.2;
+}
+
+.lead {
+    max-width: 650px;
+}
+
 .profile-img {
-    width: 260px;
-    height: 260px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    border-radius: 50%;
+    border: 5px solid rgba(0, 242, 234, 0.4);
+    transition: 0.5s ease;
+    box-shadow: 0 0 40px rgba(0,242,234,0.25);
 }
 
 .profile-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(0, 242, 234, 0.3);
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 0 60px rgba(0,242,234,0.5);
 }
 
-/* --- Experience & Project Cards --- */
-.experience-card, .project-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    border: 1px solid #222;
-    transition: all 0.3s ease;
-}
-
-.experience-card:hover, .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent) !important;
-    box-shadow: 0 10px 25px rgba(0, 242, 234, 0.1);
-}
-
-/* --- Skills & Tools Boxes --- */
-.skill-box {
-    background: #111;
-    border-radius: 10px;
-    border: 1px solid #222;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.skill-box:hover {
-    background: #1a1a1a;
-    border-color: var(--accent);
-}
-
-.skill-box i {
-    transition: transform 0.3s ease;
-    margin-bottom: 8px;
-}
-
-.skill-box:hover i {
-    transform: scale(1.2);
-}
-
-/* Stylized C Language Logo */
-.c-logo-small {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: #a8b9cc;
-    font-family: 'serif';
-}
-
-/* --- Achievements Section --- */
-.achievement-item {
-    background: #111;
-    border: 1px solid #333;
-    transition: 0.3s;
-}
-
-.achievement-item:hover {
-    transform: scale(1.03);
-    border-color: var(--accent) !important;
-    background: #181818;
-}
-
-/* --- Typing Animation Cursor --- */
+/* =========================
+   TYPING EFFECT
+========================= */
 .typing::after {
     content: '|';
     animation: blink 0.8s infinite;
 }
 
 @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
-/* --- Utility Classes --- */
-.text-dim {
-    color: var(--text-dim);
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-info {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.btn-outline-info:hover {
+    background: var(--accent);
+    color: #000 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,242,234,0.25);
 }
 
 .btn-info {
-    background-color: var(--accent);
-    color: #000;
-    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
     border: none;
+    color: #000;
 }
 
 .btn-info:hover {
-    background-color: #00d1ca;
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(127,90,240,0.35);
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .profile-img {
-        width: 200px;
-        height: 200px;
+/* =========================
+   CARD DESIGN
+========================= */
+.experience-card,
+.project-card,
+.skill-box,
+.achievement-item {
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    transition: 0.35s ease;
+}
+
+.experience-card:hover,
+.project-card:hover,
+.skill-box:hover,
+.achievement-item:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0,242,234,0.5);
+    box-shadow: 0 15px 40px rgba(0,242,234,0.12);
+}
+
+/* =========================
+   PROJECT CARDS
+========================= */
+.project-card {
+    overflow: hidden;
+}
+
+.project-card .card-body {
+    padding: 2rem;
+}
+
+.project-card i {
+    font-size: 2.7rem;
+    margin-bottom: 18px;
+    transition: 0.3s;
+}
+
+.project-card:hover i {
+    transform: scale(1.15);
+}
+
+.card-title {
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+/* =========================
+   SKILLS SECTION
+========================= */
+.skill-box {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.skill-box i {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.skill-box p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.c-logo-small {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #a8b9cc;
+}
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+.achievement-item {
+    padding: 18px;
+    font-weight: 600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 992px) {
+
+    header {
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .display-4 {
+        font-size: 3rem;
     }
 }
+
+@media (max-width: 768px) {
+
+    section {
+        padding: 70px 0;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .profile-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .skill-box {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+```
+
+# Extra Improvements for Better Look
+
+Add these small changes in your HTML for a more premium portfolio:
+
+### Replace Header Paragraph
+
+```html
+<p class="lead text-dim">
+Aspiring AI Engineer passionate about building smart solutions using Python, AI tools, and modern web technologies.
+</p>
+```
+
+### Add Gradient Section Titles
+
+Add this class to all section headings:
+
+```html
+<h2 class="section-title text-center mb-5">Projects</h2>
+```
+
+Then add CSS:
+
+```css
+.section-title {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #00f2ea, #7f5af0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+```
