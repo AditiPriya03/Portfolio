@@ -1,6 +1,7 @@
 /* ===================================
    COLOR THEME
 =================================== */
+@import "devicons/css";
 :root {
     --bg-color: #050816;
     --bg-gradient: linear-gradient(to bottom right, #050816, #0b1026);
